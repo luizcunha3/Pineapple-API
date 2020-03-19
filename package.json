@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "debug": "nodemon --inspect app.js"
+    "debug": "nodemon --inspect app.js",
+    "build-docker-image": "docker build -t luizcunha/pineapple ."
   },
   "keywords": [],
   "author": "",
