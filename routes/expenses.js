@@ -7,8 +7,8 @@ const Expense = require('../models/Expense')
 //Gets all the posts
 router.get('/', async (req, res) => {
     try{
-        const posts = await Expense.find()
-        res.json(posts)
+        const expenses = await Expense.find()
+        res.json(expenses)
     } catch(err) {
         res.json({message: err})
     }
