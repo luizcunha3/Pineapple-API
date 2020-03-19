@@ -7,7 +7,7 @@ require('dotenv/config')
 const app = express()
 
 //Import Routes
-const postsRoutes = require('./routes/posts')
+const expenseRoutes = require('./routes/expenses')
 
 //Adds Body-parser
 app.use(bodyParser.json())
@@ -16,9 +16,9 @@ app.use(bodyParser.json())
 app.use(cors())
 
 //Inserts post routes
-app.use('/posts', postsRoutes)
+app.use('/expenses', expenseRoutes)
 
-//Routes
+//Routes 
 app.get('/', (req, res) => {
     res.send("we are on home")
 })
