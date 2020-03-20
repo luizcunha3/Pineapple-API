@@ -3,7 +3,7 @@
 const express = require('express')
 const router = express.Router()
 const Expense = require('../models/Expense')
-
+const ExpensesController = require('../controllers/ExpensesController')
 //Gets all the posts
 router.get('/', async (req, res) => {
     try{
@@ -16,27 +16,14 @@ router.get('/', async (req, res) => {
 
 //Submit an expense
 router.post('/', (req, res) => {
-    const title = req.body.title
-    const value = req.body.value
-    console.log("Recieved values", title, value);
-    const expense = new Expense({
-       title: title,
-       value: value,
-    });
-    expense.save()
-    .then(savedExpense => {
-        res.json(savedExpense)
+    const expenses = req.body
+    ExpensesController.createExpense(req.body)
+    .then(expense => {
+        res.json(expense)
     })
     .catch(err => {
-        res.json({ message: err })
+        res.json({ message: expense })
     })
-/*
-    try{
-        const savedExpense = await expense.save()
-        res.json(savedExpense)
-    } catch(err) {
-        res.json({message: err})
-    } */
 })
 
 //Specific post
